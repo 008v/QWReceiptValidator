@@ -11,6 +11,7 @@ Validate In-App Purchase Receipt Locally
 # 2. Copy `QWReceiptValidator` directory to your project
 
 # 3. Validate Receipt
+* Note: bundle id and version must be hardcoded.
 ```swift
 let validator = QWReceiptValidator.sharedInstance()
         validator.validateReceipt(withBundleIdentifier: "your.Bundle.Id", bundleVersion: "1", tryAgain: true, success: { (receipt) in
