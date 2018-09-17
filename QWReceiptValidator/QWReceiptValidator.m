@@ -33,8 +33,8 @@
 
 - (void)validateReceiptWithBundleIdentifier:(NSString *)bundleIdentifier bundleVersion:(NSString *)bundleVersion tryAgain:(BOOL)tryAgain success:(Success)successBlock failure:(Failure)failureBlock
 {
-    self.bundleVersion = bundleVersion;
     self.bundleIdentifier = bundleIdentifier;
+    self.bundleVersion = bundleVersion;
     self.successBlock = successBlock;
     self.failureBlock = failureBlock;
 
@@ -117,7 +117,7 @@
         Verify that the version identifier string in the receipt matches a hard-coded constant containing the CFBundleShortVersionString value (for macOS) or the CFBundleVersion value (for iOS) that you expect in the Info.plist file.
         If they do not match, validation fails.
      */
-    if(![_bundleVersion isEqualToString:receipt.application_version])
+    if(_bundleVersion && ![_bundleVersion isEqualToString:receipt.application_version])
     {
         if(failureBlock)
         {
