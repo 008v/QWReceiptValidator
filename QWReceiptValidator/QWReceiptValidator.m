@@ -250,4 +250,8 @@
     }
 }
 
+- (void)productsRequest:(nonnull SKProductsRequest *)request didReceiveResponse:(nonnull SKProductsResponse *)response {
+    
+}
+
 @end

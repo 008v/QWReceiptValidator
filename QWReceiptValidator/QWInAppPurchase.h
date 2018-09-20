@@ -42,8 +42,8 @@
 @property (nonatomic, strong, readonly, nullable) NSNumber *web_order_line_item_id;
 
 
-- (QWInAppPurchase *)initWithData:(NSData *)inAppPurchasesData;
+- (QWInAppPurchase * _Nonnull)initWithData:(NSData * _Nonnull)inAppPurchasesData;
 
-- (NSDictionary *)fullDescription;
+- (NSDictionary * _Nonnull)fullDescription;
 
 @end
