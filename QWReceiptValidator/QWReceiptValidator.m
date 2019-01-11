@@ -31,7 +31,7 @@
     return sharedInstance;
 }
 
-- (void)validateReceiptWithBundleIdentifier:(NSString *)bundleIdentifier bundleVersion:(NSString *)bundleVersion tryAgain:(BOOL)tryAgain success:(Success)successBlock failure:(Failure)failureBlock
+- (void)validateReceiptWithBundleIdentifier:(NSString *)bundleIdentifier bundleVersion:(NSString *)bundleVersion refresh:(BOOL)refresh success:(Success)successBlock failure:(Failure)failureBlock
 {
     self.bundleIdentifier = bundleIdentifier;
     self.bundleVersion = bundleVersion;
@@ -43,7 +43,7 @@
         If no receipt is present, validation fails.
      */
     NSURL *receiptURL = [NSBundle mainBundle].appStoreReceiptURL;
-    if(![[NSFileManager defaultManager] fileExistsAtPath:receiptURL.path])
+    if (![[NSFileManager defaultManager] fileExistsAtPath:receiptURL.path] && refresh)
     {
         [self requestNewReceipt];
         return;
@@ -53,7 +53,7 @@
         Validate the receipt
      */
     [self verifyReceiptWithURL:receiptURL success:_successBlock failure:^(NSError *error) {
-        if(tryAgain)
+        if(refresh)
         {
             [self requestNewReceipt];
         }
@@ -204,7 +204,7 @@
     
     if([[NSFileManager defaultManager] fileExistsAtPath:appReceiptPath])
     {
-        [self validateReceiptWithBundleIdentifier:_bundleIdentifier bundleVersion:_bundleVersion tryAgain:NO success:_successBlock failure:_failureBlock];
+        [self validateReceiptWithBundleIdentifier:_bundleIdentifier bundleVersion:_bundleVersion refresh:NO success:_successBlock failure:_failureBlock];
     }
     else
     {

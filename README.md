@@ -14,7 +14,7 @@ Validate In-App Purchase Receipt Locally
 * Note: bundle id and version must be hardcoded.
 ```swift
 let validator = QWReceiptValidator.sharedInstance()
-        validator.validateReceipt(withBundleIdentifier: "your.Bundle.Id", bundleVersion: "1", tryAgain: true, success: { (receipt) in
+        validator.validateReceipt(withBundleIdentifier: "your.Bundle.Id", bundleVersion: "1", refresh: true, success: { (receipt) in
             // Handle Success
             // TODO: Parse the in-apps data and deliver content
             /*

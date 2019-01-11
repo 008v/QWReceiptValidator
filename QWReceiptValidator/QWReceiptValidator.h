@@ -23,10 +23,10 @@ typedef void(^Failure)(NSError * _Nonnull error);
 
  @param bundleIdentifier Bundle identifier (must be hard-coded). Use this value to validate if the receipt was indeed generated for your app.
  @param bundleVersion Bundle version (must be hard-coded). default is nil, skip validation.
- @param tryAgain Determine whether refresh receipt from AppStore when the receipt is invalid or validation is failed.
+ @param refresh Determine whether refresh receipt from AppStore when the receipt is invalid.
  @param successBlock A block of code that executes when validation is successful.
  @param failureBlock A block of code that executes when validation is failed.
  */
-- (void)validateReceiptWithBundleIdentifier:( NSString * _Nonnull)bundleIdentifier bundleVersion:(NSString * _Nullable)bundleVersion tryAgain:(BOOL)tryAgain success:(Success _Nullable)successBlock failure:(Failure _Nullable)failureBlock;
+- (void)validateReceiptWithBundleIdentifier:( NSString * _Nonnull)bundleIdentifier bundleVersion:(NSString * _Nullable)bundleVersion refresh:(BOOL)refresh success:(Success _Nullable)successBlock failure:(Failure _Nullable)failureBlock;
 
 @end
